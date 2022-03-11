@@ -6,6 +6,7 @@ import 'package:kurkoruma/components/moneyField.dart';
 import 'package:kurkoruma/components/monthCombo.dart';
 import 'package:kurkoruma/components/result.dart';
 import 'package:kurkoruma/components/sample.dart';
+import 'package:kurkoruma/components/warning.dart';
 import 'package:kurkoruma/state/calculator.dart';
 import 'package:kurkoruma/state/theme_manager.dart';
 import 'package:provider/src/provider.dart';
@@ -136,8 +137,8 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+            Wrap(
+              // mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Sample(
                   amount: 100000,
@@ -148,7 +149,10 @@ class _HomePageState extends State<HomePage> {
                   title: "Kur Getirisi Yüksek",
                   updateTextFields: () => updateTextFields(),
                 ),
-                const SizedBox(width: 20),
+                const SizedBox(
+                  width: 20,
+                  height: 20,
+                ),
                 Sample(
                   amount: 100000,
                   endCurrency: 9,
@@ -160,6 +164,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            const SizedBox(height: 40),
+            Warning(),
             const SizedBox(height: 20),
           ],
         ),
