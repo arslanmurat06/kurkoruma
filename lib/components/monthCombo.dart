@@ -39,7 +39,7 @@ class _MonthComboState extends State<MonthCombo> {
     return Container(
       width: 210,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const TextRenderer(child: Text("Vade Süresi:")),
           DropdownButton(

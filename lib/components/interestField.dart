@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kurkoruma/state/calculator.dart';
 import 'package:provider/src/provider.dart';
@@ -21,7 +22,7 @@ class _InterestFieldState extends State<InterestField> {
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Container(
-        width: 170,
+        width: kIsWeb ? 150 : 100,
         child: TextFormField(
           controller: widget.controller,
           onChanged: (value) {

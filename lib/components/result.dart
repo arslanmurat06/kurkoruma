@@ -16,7 +16,7 @@ class Resut extends StatelessWidget {
             width: MediaQuery.of(context).size.width / 2,
             height: MediaQuery.of(context).size.height / 3,
             constraints: const BoxConstraints(
-                minHeight: 300, minWidth: 500, maxHeight: double.infinity),
+                minHeight: 300, minWidth: 350, maxHeight: double.infinity),
             decoration: BoxDecoration(
               color: Colors.black,
               borderRadius: BorderRadius.circular(10),

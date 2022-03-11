@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kurkoruma/components/calculateButton.dart';
 import 'package:kurkoruma/components/currency.dart';
@@ -31,27 +32,25 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: AppBar(
-          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-          elevation: 0,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0, right: 50),
-              child: IconButton(
-                onPressed: () {
-                  context.read<ThemeManager>().toggleTheme();
-                },
-                highlightColor: Colors.transparent,
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                icon: Icon(
-                  Icons.dark_mode,
-                  color: Theme.of(context).iconTheme.color,
-                ),
-              ),
+      appBar:
+          AppBar(backgroundColor: Colors.transparent, elevation: 0, actions: [
+        Padding(
+          padding: EdgeInsets.only(top: 10.0, right: kIsWeb ? 50 : 5),
+          child: IconButton(
+            onPressed: () {
+              context.read<ThemeManager>().toggleTheme();
+            },
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            focusColor: Colors.transparent,
+            hoverColor: Colors.transparent,
+            icon: Icon(
+              Icons.dark_mode,
+              color: Theme.of(context).iconTheme.color,
             ),
-          ]),
+          ),
+        ),
+      ]),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -63,8 +62,10 @@ class _HomePageState extends State<HomePage> {
               TextRenderer(
                 child: Text(
                   "KUR KORUMALI TL MEVDUAT HESAPLAMA",
-                  style: Theme.of(context).textTheme.headline4,
-                  // style: TextStyle(color: Colors.black, fontSize: 35)),
+                  textAlign: TextAlign.center,
+                  style: kIsWeb
+                      ? Theme.of(context).textTheme.headline4
+                      : Theme.of(context).textTheme.headline6,
                 ),
               )
             ]),
@@ -74,7 +75,10 @@ class _HomePageState extends State<HomePage> {
             Center(
               child: Container(
                 constraints: const BoxConstraints(
-                    minHeight: 400, minWidth: 500, maxHeight: double.infinity),
+                    maxWidth: 500,
+                    minHeight: 400,
+                    minWidth: 350,
+                    maxHeight: double.infinity),
                 width: MediaQuery.of(context).size.width / 2,
                 decoration: BoxDecoration(
                   color: Colors.orange,
@@ -92,8 +96,8 @@ class _HomePageState extends State<HomePage> {
                     const SizedBox(height: 20),
                     MoneyField(controller: _amountController),
                     const SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    Wrap(
+                      alignment: WrapAlignment.center,
                       children: [
                         const MonthCombo(),
                         InterestField(controller: _interestController),
@@ -132,35 +136,43 @@ class _HomePageState extends State<HomePage> {
                 TextRenderer(
                   child: Text(
                       "(Üzerlerine tıklayarak hesaplamaları görebilirsiniz)",
+                      textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.headline5),
                 )
               ],
             ),
             const SizedBox(height: 20),
             Wrap(
-              // mainAxisAlignment: MainAxisAlignment.center,
+              runAlignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                Sample(
-                  amount: 100000,
-                  endCurrency: 11,
-                  startCurrency: 10,
-                  interest: 14,
-                  month: 3,
-                  title: "Kur Getirisi Yüksek",
-                  updateTextFields: () => updateTextFields(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 18.0),
+                  child: Sample(
+                    amount: 100000,
+                    endCurrency: 11,
+                    startCurrency: 10,
+                    interest: 14,
+                    month: 3,
+                    title: "Kur Getirisi Yüksek",
+                    updateTextFields: () => updateTextFields(),
+                  ),
                 ),
                 const SizedBox(
                   width: 20,
                   height: 20,
                 ),
-                Sample(
-                  amount: 100000,
-                  endCurrency: 9,
-                  startCurrency: 10,
-                  interest: 14,
-                  month: 3,
-                  title: "Faiz Getirisi Yüksek",
-                  updateTextFields: () => updateTextFields(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 18.0),
+                  child: Sample(
+                    amount: 100000,
+                    endCurrency: 9,
+                    startCurrency: 10,
+                    interest: 14,
+                    month: 3,
+                    title: "Faiz Getirisi Yüksek",
+                    updateTextFields: () => updateTextFields(),
+                  ),
                 ),
               ],
             ),
