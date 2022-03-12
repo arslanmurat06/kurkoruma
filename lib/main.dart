@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     // Replace with actual values
     options: FirebaseOptions(
@@ -15,6 +16,7 @@ void main() async {
       appId: "1:264860151536:web:5fff53000770771e2ddc35",
       messagingSenderId: "264860151536",
       projectId: "kurkoruma",
+      measurementId: "G-VXK691W8FH",
     ),
   );
   runApp(
