@@ -70,8 +70,6 @@ class _HomePageState extends State<HomePage> {
               )
             ]),
             const SizedBox(height: 40),
-            const Resut(),
-            const SizedBox(height: 40),
             Center(
               child: Container(
                 constraints: const BoxConstraints(
@@ -125,6 +123,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             const SizedBox(height: 20),
+            const Resut(),
+            const SizedBox(
+              height: 40,
+            ),
             Column(
               children: [
                 TextRenderer(
