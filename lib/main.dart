@@ -8,40 +8,20 @@ import 'package:kurkoruma/state/theme_manager.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    // Replace with actual values
-    options: FirebaseOptions(
-      apiKey: "AIzaSyCAYZ8ljW8ALBJbIKRFxzyqdk4XBrlfMtA",
-      appId: "1:264860151536:web:5fff53000770771e2ddc35",
-      messagingSenderId: "264860151536",
-      projectId: "kurkoruma",
-      measurementId: "G-VXK691W8FH",
-    ),
-  );
-  runApp(
-    /// Providers are above [MyApp] instead of inside it, so that tests
-    /// can use [MyApp] while mocking the providers
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => Calculator()),
-        ChangeNotifierProvider(create: (_) => ThemeManager()),
-      ],
-      child: MyApp(),
-    ),
-  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => Calculator()),
+      ChangeNotifierProvider(create: (_) => ThemeManager()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-
-  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer =
-      FirebaseAnalyticsObserver(analytics: analytics);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    debugPrint("main.dart buidl methodu");
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Kur Korumalı TL Mevduatı ',

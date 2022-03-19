@@ -1,3 +1,5 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:kurkoruma/components/calculateButton.dart';
@@ -14,7 +16,9 @@ import 'package:provider/src/provider.dart';
 import 'package:seo_renderer/renderers/text_renderer/text_renderer_vm.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -27,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _interestController = TextEditingController();
   final Color backgroundColor = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
